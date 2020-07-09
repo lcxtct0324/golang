@@ -36,18 +36,18 @@ func main() {
 			fmt.Println("GoodBye!")
 			break
 		} else { //进入游戏
-			usedGameNum := 1
-			gameNum := rand.Intn(100)
-			fmt.Println(gameNum)
+			usedGameNum := 1          //初始化游戏猜测次数计数
+			gameNum := rand.Intn(100) //游戏开始，生成一个随机数
+			fmt.Println(gameNum)      //把要猜的数字直接打出来，方便调试
 			fmt.Println("[0]:欢迎来带猜数字游戏!")
 			for {
-				if usedGameNum < maxGameNum {
-					if inNum, err := strconv.Atoi(userStr); err == nil {
+				if usedGameNum < maxGameNum { //游戏次数小于最大次数时，才可以继续游戏
+					if inNum, err := strconv.Atoi(userStr); err == nil { //用户必须输入数字才可以计算游戏次数
 						if inNum == gameNum {
 							fmt.Printf("[1]:%d次就猜对了,你太聪明了!\n", usedGameNum)
-							fmt.Print("[2]:在玩一局？ yes/no: ")
+							fmt.Print("[2]:在玩一局？ yes/no: ") //猜对了之后，询问用户是否继续游戏
 							fmt.Scan(&userStr)
-							if userStr != "y" && userStr != "Y" && userStr != "yes" {
+							if userStr != "y" && userStr != "Y" && userStr != "yes" { //当用户选择退出时，修改退出变量为True
 								isQuit = true
 							}
 							break
@@ -57,10 +57,10 @@ func main() {
 						} else if inNum < gameNum {
 							fmt.Println("数字过小")
 						}
-						userStr = ""
-						usedGameNum++
+						userStr = ""  //清空用户的输入信息，让下一次循环顺利进入输入环节
+						usedGameNum++ //输入的是数字，才计算有效次数
 
-					} else {
+					} else { //用户输入的不是一个数字，需要重新输入
 						fmt.Println("请输入一个整数: ")
 						fmt.Scan(&userStr)
 					}
@@ -69,7 +69,7 @@ func main() {
 					isQuit = true
 					break
 				}
-			}
+			} //单次游戏逻辑
 		}
 	}
 }
