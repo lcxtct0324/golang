@@ -29,7 +29,7 @@ func main() {
 	rand.Seed(time.Now().Unix()) //给rand函数设置一个随机种子
 	userStr := ""                //初始化一个错误的值，让逻辑进入重新输入环节。也用来防止用户输入非数字
 	isQuit := false              //是否退出游戏
-	maxGameNum := 6              //每轮最多猜几次
+	maxGameNum := 6              //每轮最多猜几次!
 
 	for {
 		if isQuit { //退出游戏
